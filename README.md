@@ -1,6 +1,6 @@
 # rbs-discord-bot
 
-![Node.js Version](https://img.shields.io/badge/Node.js-14%2B-brightgreen)
+![Node.js Version](https://img.shields.io/badge/Node.js-16%2B-brightgreen)
 ![TypeScript Version](https://img.shields.io/badge/TypeScript-5%2B-blue)
 ![Discord.js Version](https://img.shields.io/badge/Discord.js-14%2B-7289DA)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -30,7 +30,7 @@ Before you begin, ensure you have met the following requirements:
 
 4. **Configure Bot Token:**
    - Create a `.env` file.
-   - Follow the `.env.example` example file and replace the `REPLACE_ME` string with a correct one.
+   - Follow the `.env.example` file and replace the `REPLACE_ME` string with a correct one.
 
 ## Usage
 
