@@ -29,13 +29,8 @@ Before you begin, ensure you have met the following requirements:
    - Run `npm install` to install project dependencies.
 
 4. **Configure Bot Token:**
-   - Create a `config.json` file in the project root.
-   - Add your Discord bot token to the `config.json` file:
-     ```json
-     {
-       "token": "YOUR_BOT_TOKEN_HERE"
-     }
-     ```
+   - Create a `.env` file.
+   - Follow the `.env.example` example file and replace the `REPLACE_ME` string with a correct one.
 
 ## Usage
 
