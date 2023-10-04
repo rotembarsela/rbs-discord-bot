@@ -1,8 +1,8 @@
 # rbs-discord-bot
 
 ![Node.js Version](https://img.shields.io/badge/Node.js-14%2B-brightgreen)
-![TypeScript Version](https://img.shields.io/badge/TypeScript-4%2B-blue)
-![Discord.js Version](https://img.shields.io/badge/Discord.js-13%2B-7289DA)
+![TypeScript Version](https://img.shields.io/badge/TypeScript-5%2B-blue)
+![Discord.js Version](https://img.shields.io/badge/Discord.js-14%2B-7289DA)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 A Discord bot built with Node.js and TypeScript using the Discord.js library.
