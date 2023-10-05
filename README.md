@@ -11,7 +11,7 @@ A Discord bot built with Node.js and TypeScript using the Discord.js library.
 
 Before you begin, ensure you have met the following requirements:
 
-- **Node.js:** Ensure you have Node.js 14 or higher installed. You can download it from [nodejs.org](https://nodejs.org/).
+- **Node.js:** Ensure you have Node.js 16 or higher installed. You can download it from [nodejs.org](https://nodejs.org/).
 
 ## Getting Started
 

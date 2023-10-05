@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --exec npx ts-node src/index.ts",
+    "deploy-commands": "npx ts-node src/deploy-commands.ts",
     "start": "node dist/index.js",
     "build": "TODO: src/index.ts --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,8 +14,13 @@
   "author": "Rotem Bar-Sela <rotem.barsela95@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@discord-player/extractor": "^4.4.4",
+    "@discordjs/opus": "^0.9.0",
+    "discord-player": "^6.6.4",
     "discord.js": "^14.13.0",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "ffmpeg-static": "^5.2.0",
+    "youtube-ext": "^1.1.14"
   },
   "devDependencies": {
     "eslint": "^8.50.0",
