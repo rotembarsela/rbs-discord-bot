@@ -33,7 +33,7 @@ export async function execute(
 
   if (!member?.voice.channelId) {
     return await interaction.reply({
-      content: `❌ | Join a voice channel`,
+      content: `❌ | You have to join a Voice Channel`,
       ephemeral: true,
     });
   }
@@ -98,7 +98,10 @@ export async function execute(
       .search(query, {
         requestedBy: interaction.user,
       })
-      .then((x) => x);
+      .then((x) => {
+        console.log(x);
+        return x;
+      });
 
     if (result.isEmpty()) {
       const embed = new EmbedBuilder().setDescription(`❌ | \`${query}\`.`);
@@ -120,7 +123,7 @@ export async function execute(
       queue.node.play();
     }
 
-    //   - Add estimated time until playing
+    // Add estimated time until playing
     return await interaction.followUp({
       content: `⏱️ | \`${title}\`.`,
     });

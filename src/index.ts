@@ -12,6 +12,10 @@ const client = new Client({
   ],
 });
 
+client.once(Events.ClientReady, (c) => {
+  console.log(`Discord bot is ready! logged in as ${c.user.tag} 🤖`);
+});
+
 const player = new Player(client);
 
 (async () => {
@@ -19,50 +23,46 @@ const player = new Player(client);
 })();
 
 player.events.on("playerStart", (queue, track) => {
-  // we will later define queue.metadata object while creating the queue
-  queue.metadata.channel.send(`Started playing **${track.title}**!`);
-});
-
-client.login(config.DISCORD_TOKEN);
-
-client.once(Events.ClientReady, (c) => {
-  console.log(`Discord bot is ready! logged in as ${c.user.tag} 🤖`);
+  const responseToChannel = `Started playing **${track.title}**!\n${track.url}`;
+  queue.metadata.channel.send(responseToChannel);
 });
 
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === "embed") {
-    const embed = new EmbedBuilder()
-      .setTitle("RBS-BOT")
-      .setDescription("Play music with your friends on the voice channel")
-      .setAuthor({
-        name: "Rotem Bar-Sela",
-        url: "https://www.linkedin.com/in/rotembarsela",
-      })
-      .setColor("Purple")
-      .addFields(
-        {
-          name: "Field Title",
-          value: "Random Field",
-          inline: true,
-        },
-        {
-          name: "Second Field Title",
-          value: "Second Random Field",
-          inline: true,
-        }
-      );
+  const { commandName } = interaction;
 
-    interaction.reply({ embeds: [embed] });
-  }
+  switch (commandName) {
+    case "ping":
+      await commands.ping.execute(interaction);
+      break;
+    case "play":
+      await commands.play.execute(interaction, client);
+      break;
+    case "embed":
+      const embed = new EmbedBuilder()
+        .setTitle("RBS-BOT")
+        .setDescription("Play music with your friends on the voice channel")
+        .setAuthor({
+          name: "Rotem Bar-Sela",
+          url: "https://www.linkedin.com/in/rotembarsela",
+        })
+        .setColor("Purple")
+        .addFields(
+          {
+            name: "Field Title",
+            value: "Random Field",
+            inline: true,
+          },
+          {
+            name: "Second Field Title",
+            value: "Second Random Field",
+            inline: true,
+          }
+        );
 
-  if (interaction.commandName === "ping") {
-    interaction.reply("hello");
-  }
-
-  if (interaction.commandName === "play") {
-    await commands.play.execute(interaction, client);
+      interaction.reply({ embeds: [embed] });
+      break;
   }
 });
 
@@ -92,9 +92,13 @@ client.on("messageCreate", (message) => {
     message.reply({ embeds: [embed] });
   }
 
-  console.log(message.content);
-  console.log(message.createdAt.toDateString());
-  console.log(message.author.tag);
+  if (process.env.ENV === "dev") {
+    console.log(message.content);
+    console.log(message.createdAt.toDateString());
+    console.log(message.author.tag);
+  }
 });
 
 client.on("channelPinsUpdate", (channel, date) => {});
+
+client.login(config.DISCORD_TOKEN);
