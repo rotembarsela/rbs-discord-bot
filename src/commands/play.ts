@@ -37,7 +37,6 @@ export async function execute(
       ephemeral: true,
     });
   }
-  console.log(member?.voice.channelId);
 
   if (
     interaction.guild?.members.me?.voice.channelId &&
@@ -59,8 +58,6 @@ export async function execute(
       metadata: interaction, // we can access this metadata object using queue.metadata later on
     },
   });
-
-  console.log(track);
 
   if (!query) {
     const queue = useQueue(interaction.guildId ?? "");
